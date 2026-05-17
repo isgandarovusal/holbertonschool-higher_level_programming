@@ -2,10 +2,14 @@ from flask import Flask, render_template, request
 import json
 import csv
 import os
+from jinja2 import FileSystemLoader
 
-# templates qovluğunun yerini mütləq yol (absolute path) ilə təyin edirik
+# Şablon qovluğunun mütləq yolunu tapırıq
 template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), 'templates'))
+
 app = Flask(__name__, template_folder=template_dir)
+# Jinja-nın daxili include mexanizminin çaşmaması üçün loader-i mütləq yolla məcburi yeniləyirik
+app.jinja_loader = FileSystemLoader(template_dir)
 
 def read_json():
     try:
