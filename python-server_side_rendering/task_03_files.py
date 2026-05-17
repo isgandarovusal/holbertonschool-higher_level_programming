@@ -1,8 +1,11 @@
 from flask import Flask, render_template, request
 import json
 import csv
+import os
 
-app = Flask(__name__)
+# templates qovluğunun yerini mütləq yol (absolute path) ilə təyin edirik
+template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), 'templates'))
+app = Flask(__name__, template_folder=template_dir)
 
 def read_json():
     try:
@@ -17,7 +20,6 @@ def read_csv():
         with open('products.csv', 'r') as file:
             reader = csv.DictReader(file)
             for row in reader:
-                # ID və price sahələrini uyğun tiplərə çeviririk
                 row['id'] = int(row['id'])
                 row['price'] = float(row['price'])
                 products.append(row)
