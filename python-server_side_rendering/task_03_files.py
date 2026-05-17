@@ -1,21 +1,14 @@
 from flask import Flask, render_template, request
 import json
 import csv
-import os
-from jinja2 import FileSystemLoader
 
-# Şablon qovluğunun mütləq yolunu tapırıq
-template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), 'templates'))
-
-app = Flask(__name__, template_folder=template_dir)
-# Jinja-nın daxili include mexanizminin çaşmaması üçün loader-i mütləq yolla məcburi yeniləyirik
-app.jinja_loader = FileSystemLoader(template_dir)
+app = Flask(__name__)
 
 def read_json():
     try:
         with open('products.json', 'r') as file:
             return json.load(file)
-    except (FileNotFoundError, json.JSONDecodeError):
+    except Exception:
         return []
 
 def read_csv():
@@ -27,31 +20,9 @@ def read_csv():
                 row['id'] = int(row['id'])
                 row['price'] = float(row['price'])
                 products.append(row)
-    except FileNotFoundError:
+    except Exception:
         pass
     return products
-
-@app.route('/')
-def home():
-    return render_template('index.html')
-
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
-@app.route('/contact')
-def contact():
-    return render_template('contact.html')
-
-@app.route('/items')
-def items():
-    try:
-        with open('items.json', 'r') as file:
-            data = json.load(file)
-            items_list = data.get('items', [])
-    except (FileNotFoundError, json.JSONDecodeError):
-        items_list = []
-    return render_template('items.html', items=items_list)
 
 @app.route('/products')
 def products():

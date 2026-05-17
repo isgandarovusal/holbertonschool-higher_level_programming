@@ -1,0 +1,30 @@
+The ``5-text_indentation`` module
+===================================
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+    >>> text_indentation("Hello. How are you? Fine: Good.")
+    Hello.
+    <BLANKLINE>
+    How are you?
+    <BLANKLINE>
+    Fine:
+    <BLANKLINE>
+    Good.
+    <BLANKLINE>
+
+    >>> text_indentation("  Start space.   Space after dot.")
+    Start space.
+    <BLANKLINE>
+    Space after dot.
+    <BLANKLINE>
+
+    >>> text_indentation(89)
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
+
+    >>> text_indentation()
+    Traceback (most recent call last):
+        ...
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
