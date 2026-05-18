@@ -1,3 +1,6 @@
 #!/usr/bin/node
-const cIsFun = 'C is fun';
-console.log(cIsFun);
+if (process.argv[2] === undefined) {
+  console.log('No argument');
+} else {
+  console.log(process.argv[2]);
+}
