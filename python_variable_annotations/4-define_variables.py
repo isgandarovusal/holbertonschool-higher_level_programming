@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Define and annotate variables."""
+"""define and annotate the variables"""
 
 
-school: str = "Holberton"
-a: int = 89
+a: int = 1
 pi: float = 3.14
 i_understand_annotations: bool = True
+school: str = "Holberton"

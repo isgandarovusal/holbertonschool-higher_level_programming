@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Basic annotations for addition."""
+"""Add two numbers."""
 
 
 def add(a: float, b: float) -> float:
-    """Return the sum of two floats."""
-    return a + b
+    """Return the sum of a and b"""
+    return a+b

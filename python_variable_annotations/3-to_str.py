@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Basic annotations for converting float to string."""
+"""Taking a float n as argument"""
 
 
-def to_str(a: float) -> str:
-    """Return string representation of a float."""
-    return str(a)
+def to_str(n: float) -> str:
+    """Return the string of the float"""
+    return str(n)
